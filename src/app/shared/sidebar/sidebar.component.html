@@ -1,0 +1,19 @@
+<div class="sidebar" [class.closed]="!isOpen">
+    <h2 class="logo">Integrity Solution</h2>
+    <nav>
+      <ul>
+        <li><a routerLink="/user/dashboard" routerLinkActive="active">
+          <i class="bi bi-grid"></i> <span>Dashboard</span>
+        </a></li>
+        <li ngbDropdown>
+          <a href (click)="false" ngbDropdownToggle>
+            <i class="bi bi-people"></i> <span>Manage User</span>
+          </a>
+          <div ngbDropdownMenu>
+            <button ngbDropdownItem routerLink="/user/add-user">Add User</button>
+            <!-- Add other user management options here -->
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
