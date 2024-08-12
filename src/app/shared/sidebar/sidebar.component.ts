@@ -1,9 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, SimpleChanges } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [
+    NgbDropdownModule,
+    RouterModule
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

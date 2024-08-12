@@ -6,10 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-private apiUrl = 'https://localhost:7042/api/combochart';
-  constructor(private http:HttpClient) { }
+private apiUrl = 'https://localhost:7042/api';
+constructor(private http: HttpClient) {}
 
-  getChartData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
-  }
+getRevenueData(filter: string): Observable<any> {
+  return this.http.get(`${this.apiUrl}/Charts/revenue`, { params: { filter } });
+}
+
+getMonthlyRevenueData(): Observable<any> {
+  return this.http.get(`${this.apiUrl}/Charts/monthly-revenue`);
+}
 }

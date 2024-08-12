@@ -7,10 +7,15 @@
         </a></li>
         <li ngbDropdown>
           <a href (click)="false" ngbDropdownToggle>
-            <i class="bi bi-people"></i> <span>Manage User</span>
+            <i class="bi bi-people"></i> <span>Charts</span>
           </a>
           <div ngbDropdownMenu>
-            <button ngbDropdownItem routerLink="/user/add-user">Add User</button>
+            <button ngbDropdownItem routerLink="/user/revenue">Revenue</button>
+            <button ngbDropdownItem routerLink="/user/audience-metrics">audience-metrics</button>
+            <button ngbDropdownItem routerLink="/user/sessions-by-countries">sessions-by-countries</button>
+            <button ngbDropdownItem routerLink="/user/balance-overview">balance-overview</button>
+            <button ngbDropdownItem routerLink="/user/sales-by-locations">sales-by-locations</button>
+            <button ngbDropdownItem routerLink="/user/store-visits-by-source">store-visits-by-source</button>
             <!-- Add other user management options here -->
           </div>
         </li>

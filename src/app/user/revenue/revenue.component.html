@@ -1,3 +1,31 @@
-<div>
-    <canvas id="comboChart"></canvas>
-</div>
+<!-- src/app/revenue/revenue.component.html -->
+<div class="revenue-container">
+    <h2>Revenue</h2>
+    <div class="filter-buttons">
+      <button (click)="loadRevenueData('ALL')">ALL</button>
+      <button (click)="loadRevenueData('1M')">1M</button>
+      <button (click)="loadRevenueData('Month')">6M</button>
+      <button (click)="loadRevenueData('Year')">1Y</button>
+    </div>
+    <div class="revenue-summary">
+      <div class="summary-item">
+        <h3>{{ revenueData?.totalOrders }}</h3>
+        <p>Orders</p>
+      </div>
+      <div class="summary-item">
+        <h3>{{ revenueData?.totalEarnings | currency }}</h3>
+        <p>Earnings</p>
+      </div>
+      <div class="summary-item">
+        <h3>{{ revenueData?.totalRefunds }}</h3>
+        <p>Refunds</p>
+      </div>
+      <div class="summary-item">
+        <h3>{{ revenueData?.conversionRatio | percent }}</h3>
+        <p>Conversion Ratio</p>
+      </div>
+    </div>
+    <div class="chart-container">
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
