@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -25,7 +26,8 @@ export class HeaderComponent {
     private tokenService: TokenService,
     private router: Router,
     private userService:UserService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private cookieService: CookieService,
   ) {
     // this.userName = this.tokenService.getName();
     // this.imagePath = this.tokenService.getImagePath();
@@ -52,13 +54,10 @@ export class HeaderComponent {
     this.toggleSidebar.emit();
   }
 
-  changePassword() {
-  
-    this.router.navigate(['/change-password']);
-  }
+ 
 
   logOut() {
-    localStorage.removeItem('login_token');
+    this.cookieService.delete('login_token');
     this.router.navigate(['/login']);
   }
 }

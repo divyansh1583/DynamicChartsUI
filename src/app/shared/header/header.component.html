@@ -1,19 +1,15 @@
 <header>
     <div class="left">
       <button class="menu-toggle" (click)="onToggleSidebar()">☰</button>
-      <span>Hi, {{ userName }} 👋</span>
+      <!-- <span>Hi, {{ userName }} 👋</span> -->
     </div>
     <div class="right">
       
         <div class="profile-dropdown" [matMenuTriggerFor]="menu">
-          <img [src]="imagePath" alt="User" class="user-image">
-          <span class="user-name d-none d-md-flex">{{userName}}</span>
+          <mat-icon>account_circle</mat-icon>
         </div>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="changePassword()">
-          <mat-icon>person</mat-icon>
-          <span>Change Password</span>
-        </button>
+     
         <button mat-menu-item (click)="logOut()">
           <mat-icon>logout</mat-icon>
           <span>Logout</span>

@@ -7,7 +7,7 @@ import { LoginDetails } from '../../shared/modals/login.modal';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7042/api/Auth'; // Replace with your API URL
+  private apiUrl = 'https://localhost:7042/api/Admin'; // Replace with your API URL
 
   constructor(private http: HttpClient) { }
 

@@ -1,12 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import { UserService } from '../services/user.service';
+import { CommonModule } from '@angular/common';
+
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-store-visits-by-source',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './store-visits-by-source.component.html',
-  styleUrl: './store-visits-by-source.component.scss'
+  styleUrls: ['./store-visits-by-source.component.scss']
 })
-export class StoreVisitsBySourceComponent {
+export class StoreVisitsBySourceComponent implements OnInit {
+  chart: Chart<'doughnut'> | undefined; // Change to 'doughnut' type
 
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.userService.getStoreVisitsBySource().subscribe(data => {
+      console.log(data); 
+      this.createChart(data);
+    });
+  }
+
+  createChart(data: any) {
+    const ctx = document.getElementById('storeVisitsChart') as HTMLCanvasElement;
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    const config: ChartConfiguration<'doughnut'> = { // Specify 'doughnut' type here
+      type: 'doughnut',
+      data: {
+        labels: data.map((item: any) => item.sourceType),
+        datasets: [{
+          data: data.map((item: any) => item.percentage),
+          backgroundColor: [
+            '#3366cc', '#dc3912', '#ff9900', '#109618', '#990099'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'right',
+          }
+        }
+      }
+    };
+    this.chart = new Chart(ctx, config);
+  }
 }

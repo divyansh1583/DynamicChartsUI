@@ -1,0 +1,117 @@
+/* Wrapper for the entire view */
+.login-form-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Background image styling */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place the image behind the content */
+  }
+  
+  /* Styling for the login form container */
+  .login-form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(155, 208, 233, 0.7); /* Increase transparency */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* Logo styling */
+  .logo {
+    font-family: "Poppins", sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #e2e0cc; /* White color for contrast */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for a 3D effect */
+  }
+  
+  /* Styling for the card wrapper */
+  .card-wrapper {
+    background-color: transparent; /* Transparent background for the card wrapper */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Align card title to the left and style it */
+  .card-title {
+    font-family: "Poppins", sans-serif;
+    color: #333333;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  /* Form label styling */
+  .form-label {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b3333;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* Input fields styling */
+  .form-control {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #333333;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    padding: 10px;
+  }
+  
+  /* Password input group styling */
+  .password-input-group {
+    position: relative;
+  }
+  
+  /* Password toggle button styling */
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* Forgot password link styling */
+  .forgot-password-link {
+    color: #4285f4;
+    text-decoration: none;
+  }
+  
+  .forgot-password-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Submit button styling */
+  .btn-primary {
+    background-color: #4285f4;
+    border-color: #4285f4;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 10px 0;
+  }
+  
