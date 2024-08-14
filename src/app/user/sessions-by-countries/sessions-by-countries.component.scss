@@ -1,0 +1,51 @@
+.chart-container {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+  .filter-buttons {
+    margin-bottom: 20px;
+  }
+  .filter-buttons button {
+    background-color: #333;
+    color: #888;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .filter-buttons button.active {
+    background-color: #4a4a4a;
+    color: white;
+  }
+  .chart {
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .country-name {
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+  }
+  .bar-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+  .bar {
+    height: 20px;
+    background-color: #5ad8e6;
+    transition: width 0.3s ease-in-out;
+  }
+  .sessions {
+    margin-left: 10px;
+  }

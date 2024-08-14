@@ -12,7 +12,6 @@ import { RevenueComponent } from './revenue/revenue.component';
     CommonModule,
     UserRoutingModule,
     RevenueComponent
-    
   ]
 })
 export class UserModule { }

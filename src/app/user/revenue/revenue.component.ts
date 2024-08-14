@@ -25,12 +25,12 @@ Chart.register(...registerables);
     }
   
     loadRevenueData(filter: string = 'ALL'): void {
-      this.userService.getRevenueData(filter).subscribe(
-        (data) => {
+      this.userService.getRevenueData(filter).subscribe({
+        next:(data) => {
           this.revenueData = data;
         },
-        (error) => console.error('Error fetching revenue data:', error)
-      );
+        error:(error) => console.error('Error fetching revenue data:', error)
+    });
     }
   
     loadMonthlyData(): void {

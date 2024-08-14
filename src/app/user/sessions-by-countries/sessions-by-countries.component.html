@@ -1,1 +1,17 @@
-<p>sessions-by-countries works!</p>
+<div class="chart-container">
+    <h2>Sessions by Countries</h2>
+    <div class="filter-buttons">
+      <button (click)="loadData('ALL')" [class.active]="currentFilter === 'ALL'">ALL</button>
+      <button (click)="loadData('6M')" [class.active]="currentFilter === '6M'">6M</button>
+      <button (click)="loadData('1M')" [class.active]="currentFilter === '1M'">1M</button>
+    </div>
+    <div class="chart">
+      <div *ngFor="let country of countries" class="chart-row">
+        <span class="country-name">{{ country.countryName }}</span>
+        <div class="bar-container">
+          <div class="bar" [style.width]="getBarWidth(country.sessions)"></div>
+          <span class="sessions">{{ country.sessions }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
