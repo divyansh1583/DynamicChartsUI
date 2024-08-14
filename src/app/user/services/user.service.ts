@@ -7,6 +7,20 @@ export interface SalesByLocationsDTO {
   salesPercentage: any;
 }
 
+export interface BalanceOverview {
+  revenue: number;
+  expenses: number;
+  profitRatio: number;
+  monthlyData: MonthlyBalanceData[];
+}
+
+export interface MonthlyBalanceData {
+  monthName: string;
+  revenue: number;
+  expenses: number;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,8 +47,8 @@ getSessionsByCountries(filter: string): Observable<any> {
   return this.http.get(`${this.apiUrl}/sessions-by-countries?filter=${filter}`);
 }
 
-getBalanceOverview(year: string): Observable<any> {
-  return this.http.get(`${this.apiUrl}/balance-overview?year=${year}`);
+getBalanceOverview(year: number): Observable<BalanceOverview> {
+  return this.http.get<BalanceOverview>(`${this.apiUrl}/balance-overview?year=${year}`);
 }
 
 

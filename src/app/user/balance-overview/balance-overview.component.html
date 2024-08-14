@@ -1,1 +1,16 @@
-<p>balance-overview works!</p>
+<!-- balance-overview.component.html -->
+<div class="balance-overview">
+    <h2>Balance Overview</h2>
+    <div class="sort-by">
+      <label for="yearSelect">SORT BY: </label>
+      <select id="yearSelect" [(ngModel)]="selectedYear" (change)="onYearChange()">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+    </div>
+    <div class="summary" *ngIf="balanceOverview">
+      <div class="revenue">{{balanceOverview.revenue | currency:'USD':'symbol':'1.0-0'}} Revenue</div>
+      <div class="expenses">{{balanceOverview.expenses | currency:'USD':'symbol':'1.0-0'}} Expenses</div>
+      <div class="profit-ratio">{{balanceOverview.profitRatio | number:'1.1-1'}}% Profit Ratio</div>
+    </div>
+    <canvas id="balanceChart"></canvas>
+  </div>
