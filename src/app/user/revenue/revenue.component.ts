@@ -78,6 +78,7 @@ Chart.register(...registerables);
               backgroundColor: 'rgba(255, 99, 132, 0.5)',
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1,
+               borderDash: [5, 5],
               type: 'line',
               yAxisID: 'y-axis-1',
             }
