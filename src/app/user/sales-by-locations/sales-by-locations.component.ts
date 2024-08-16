@@ -3,6 +3,7 @@ import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { SalesByLocationsDTO, UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
 import { ChartType, GoogleChartComponent, GoogleChartsModule } from 'angular-google-charts';
+import { ToastrService } from 'ngx-toastr';
 Chart.register(...registerables);
 
 @Component({
@@ -30,12 +31,22 @@ export class SalesByLocationsComponent implements OnInit {
 
   salesList: SalesByLocationsDTO[] = [];
 
-  constructor(private salesService: UserService) {}
+  constructor(private salesService: UserService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.salesService.getSalesByLocations().subscribe((data) => {
-      this.chartData = data.map((item) => [item.countryName, item.salesPercentage]);
-      this.salesList = data;
+    this.salesService.getSalesByLocations().subscribe({
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.salesList = res.data;
+          this.chartData = this.salesList.map((item) => [item.countryName, item.salesPercentage]);
+          this.salesList = res.data;
+        } else {
+          this.toastr.error(res.message);
+        }
+      },
+      error: (err) => {
+        this.toastr.error(err.message);
+      }
     });
   }
 }

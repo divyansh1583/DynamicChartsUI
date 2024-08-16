@@ -31,16 +31,18 @@ export class SessionsByCountriesComponent {
   loadData(filter: string) {
     this.currentFilter = filter;
     this.userService.getSessionsByCountries(filter).subscribe({
-      next:(data: CountryData[]) => {
-        this.countries = data;
-        this.maxSessions = Math.max(...this.countries.map(c => c.sessions));
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.countries = res.data;
+          this.maxSessions = Math.max(...this.countries.map(c => c.sessions));
+        } else {
+          this.toastr.error(res.message);
+        }
       },
-      error: (error) => {
-        console.error('Error:', error)
-        this.toastr.error("Error in loading",error.message);  
-      },
-
-  });
+      error: (err) => {
+        this.toastr.error(err.message);
+      }
+    });
   }
 
   getBarWidth(sessions: number): string {

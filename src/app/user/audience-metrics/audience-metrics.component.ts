@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { CommonModule } from '@angular/common';
 import { AudienceMetricsDTO } from '../../shared/modals/charts.modal';
+import { ToastrService } from 'ngx-toastr';
 
 Chart.register(...registerables);
 
@@ -25,20 +26,26 @@ export class AudienceMetricsComponent implements OnInit {
   };
   chart: Chart | undefined;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadMetricsData();
   }
 
   loadMetricsData(filter: string = 'ALL'): void {
-    this.userService.getAudienceMetrics(filter).subscribe(
-      (data) => {
-        this.metrics = data;
-        this.createChart();
+    this.userService.getAudienceMetrics(filter).subscribe({
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.metrics = res.data;
+          this.createChart();
+        } else {
+          this.toastr.error(res.message);
+        }
       },
-      (error) => console.error('Error fetching metrics data:', error)
-    );
+      error: (err) => {
+        this.toastr.error(err.message);
+      }
+    });
   }
 
   createChart(): void {
