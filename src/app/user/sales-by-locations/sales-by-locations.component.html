@@ -1,26 +1,26 @@
 <div class="sales-by-locations">
-    <div class="header">
+  <div class="header">
       <h3>Sales by Locations</h3>
-      <button class="btn btn-primary">Export Report</button>
-    </div>
-    <google-chart
+      <button class="btn btn-primary">Export</button> <!-- Shortened button text -->
+  </div>
+  <google-chart
       [type]="chartType"
       [data]="chartData"
       [columns]="chartColumns"
       [options]="chartOptions"
-    ></google-chart>
-    <div *ngFor="let sale of salesList" class="sales-item">
+      class="google-chart"
+  ></google-chart>
+  <div *ngFor="let sale of salesList" class="sales-item">
       <div class="country-name">{{ sale.countryName }}</div>
       <div class="progress-bar-container">
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            [style.width.%]="sale.salesPercentage"
-          ></div>
-        </div>
-        <div class="percentage">{{ sale.salesPercentage }}%</div>
+          <div class="progress">
+              <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [style.width.%]="sale.salesPercentage"
+              ></div>
+          </div>
+          <div class="percentage">{{ sale.salesPercentage }}%</div>
       </div>
-    </div>
   </div>
-  
+</div>

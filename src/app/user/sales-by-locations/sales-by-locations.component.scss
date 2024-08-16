@@ -1,53 +1,76 @@
 .sales-by-locations {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px; /* Adjust the width as per requirement */
-    margin: 0 auto;
+  background-color: #ffffff;
+  padding: 10px; /* Reduced padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px; /* Reduced width */
+  margin: 5px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.google-chart {
+  width: 100%;
+  height: 250px; /* Reduced height */
+}
+
+.sales-item {
+  margin-top: 15px; /* Slightly reduced margin */
+}
+
+.country-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+}
+
+.progress {
+  flex: 1;
+  height: 8px; /* Reduced height */
+  background-color: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4e73df 0%, #224abe 100%);
+}
+
+.percentage {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sales-by-locations {
+      max-width: 100%;
+      padding: 8px;
   }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
+
   .google-chart {
-    width: 100%;
-    height: 350px; /* Adjust the height as per requirement */
+      height: 200px; /* Adjusted height for smaller screens */
   }
-  
+
   .sales-item {
-    margin-top: 20px;
+      margin-top: 10px;
   }
-  
-  .country-name {
-    font-weight: bold;
-    margin-bottom: 5px;
+
+  .header h3 {
+      font-size: 1rem;
   }
-  
-  .progress-bar-container {
-    display: flex;
-    align-items: center;
+
+  .btn {
+      font-size: 0.875rem;
   }
-  
-  .progress {
-    flex: 1;
-    height: 10px;
-    background-color: #e9ecef;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-right: 10px;
-  }
-  
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #4e73df 0%, #224abe 100%);
-  }
-  
-  .percentage {
-    font-weight: bold;
-  }
-  
+}

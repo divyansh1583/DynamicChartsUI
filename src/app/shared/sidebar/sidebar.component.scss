@@ -1,85 +1,142 @@
 .sidebar {
-    width: 250px;
-    height: 100%;
-    background-color: #4285f4;
-    color: white;
-    padding: 20px;
-    transition: all 0.3s ease;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .sidebar.closed {
-    transform: translateX(-100%);
-  }
-  
-  .logo {
-    font-size: 24px;
-    margin-bottom: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    margin-bottom: 15px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  nav ul li a:hover, nav ul li a.active {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .active {
-    background-color: white;
-    color: #4285f4;
-  }
-  
-  .submenu {
-    margin-left: 20px;
-    margin-top: 10px;
-    display: none;
-    &.open {
-      display: block;
-    }
-  }
-  
-  
-  .sidebar.closed .logo,
-  .sidebar.closed nav ul li a span {
-    display: none;
-  }
-  
-  .sidebar.closed nav ul li a {
-    justify-content: center;
-  }
-  
-  :host ::ng-deep .dropdown-menu {
-    background-color: #4285f4;
-    border: none;
-  }
-  
-  :host ::ng-deep .dropdown-item {
-    color: white;
-    padding: 10px 20px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  }
-  
+  width: 250px;
+  height: 100%;
+  background-color: #4285f4;
+  color: white;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.logo {
+  font-size: 24px;
+  margin-bottom: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active,
+nav ul li a[ngbDropdownToggle].active {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 2px 0 0 0 white;
+  color: white;
+}
+
+nav ul li a.active span,
+nav ul li a[ngbDropdownToggle].active span {
+  font-weight: bold;
+  color: white;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: transparent;
+  transition: background 0.3s;
+}
+
+nav ul li a.active::after,
+nav ul li a:hover::after {
+  background: #fff;
+}
+
+.submenu {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: none;
+}
+
+.submenu.open {
+  display: block;
+}
+
+.sidebar.closed .logo,
+.sidebar.closed nav ul li a span {
+  display: none;
+}
+
+.sidebar.closed nav ul li a {
+  justify-content: center;
+}
+
+:host ::ng-deep .dropdown-menu {
+  background-color: #4285f4;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+:host ::ng-deep .dropdown-item {
+  color: white;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:host ::ng-deep .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+:host ::ng-deep .dropdown-item.active {
+  background-color: white;
+  color: #4285f4;
+  font-weight: bold;
+  border-left: 3px solid #4285f4;
+}
+
+:host ::ng-deep .dropdown-toggle.active {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+:host ::ng-deep .dropdown-menu .dropdown-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: bold;
+}
+
+:host ::ng-deep .dropdown-menu .dropdown-item.active:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+:host ::ng-deep .dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  color: white;
+}

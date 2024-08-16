@@ -16,6 +16,7 @@ Chart.register(...registerables);
     revenueData: any;
     monthlyData: any;
     chart: Chart | undefined;
+currentFilter: any;
   
     constructor(private userService: UserService) {}
   

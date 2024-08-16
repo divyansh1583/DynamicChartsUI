@@ -1,5 +1,46 @@
-.can{
-  width: 50%;
+.store-visits-by-source {
+  width: 80%;
+  max-width: 1200px;
+  margin: 30px auto;
+  background-color: #f0f4f8; /* Light grey background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  color: #333; /* Dark text for contrast */
+  font-family: 'Arial', sans-serif; /* Improved font */
+}
+
+h2 {
+  text-align: left;
+  color: #2c3e50; /* Darker text color for heading */
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+}
+
+.report-dropdown {
+  margin-bottom: 20px;
+  text-align: center; /* Center the dropdown */
+}
+
+.report-dropdown select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.chart-container {
   display: flex;
-  
-} 
+  justify-content: center; /* Center the canvas */
+  align-items: center;
+  height: 400px; /* Adjust height as needed */
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+}

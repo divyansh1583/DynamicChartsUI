@@ -20,6 +20,7 @@ export class SidebarComponent {
   isExpanded = true;
   showSubmenu: boolean = false;
   isShowing = false;
+  
 
 
   ngOnChanges(changes: SimpleChanges) {
