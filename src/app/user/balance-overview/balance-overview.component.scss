@@ -1,43 +1,82 @@
-/* balance-overview.component.css */
 .balance-overview {
-    background-color: #1e2130;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
+  background: linear-gradient(145deg, #1e2130, #24283a);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 25%;
+  margin-top: 12%;
+  width: 50%;
+  margin-bottom: 3%;
+  position: relative;
+  transition: transform 0.3s ease;
+}
 
-    margin-left: 25% ;
-    margin-top: 12%;
-    width: 50%;
-    margin-bottom: 3%;
-    position: relative;
-  }
-  
-  .sort-by {
-    margin-bottom: 20px;
-  }
-  
-  .summary {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .revenue {
-    color: #4bc0c0;
-  }
-  
-  .expenses {
-    color: #ff6384;
-  }
-  
-  .profit-ratio {
-    color: #36a2eb;
-  }
-  
-  select {
-    background-color: #2c3144;
-    color: #8b92a9;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
+.balance-overview:hover {
+  transform: scale(1.02);
+}
+
+.sort-by {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.sort-by label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #8b92a9;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.revenue,
+.expenses,
+.profit-ratio {
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.revenue {
+  color: #4bc0c0;
+}
+
+.expenses {
+  color: #ff6384;
+}
+
+.profit-ratio {
+  color: #36a2eb;
+}
+
+select {
+  background-color: #2c3144;
+  color: #8b92a9;
+  border: 1px solid #3b4257;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+select:hover {
+  background-color: #3b4257;
+  color: white;
+}
+
+canvas {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #24283a;
+  padding: 10px;
+}

@@ -1,51 +1,113 @@
 .chart-container {
-    background-color: #1e1e1e;
-    color: white;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: white;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 700px;
+  margin: 5% auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-buttons button {
+  background-color: #333;
+  color: #ccc;
+  border: 1px solid #444;
+  padding: 10px 15px;
+  margin-right: 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+}
+
+.filter-buttons button.active {
+  background-color: #555;
+  color: #fff;
+  border-color: #666;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.country-name {
+  width: 100px;
+  text-align: right;
+  margin-right: 15px;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #d0d0d0;
+}
+
+.bar-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.bar {
+  height: 20px;
+  background-color: #5ad8e6;
+  transition: width 0.4s ease-in-out;
+  border-radius: 5px;
+}
+
+.sessions {
+  margin-left: 15px;
+  font-size: 1rem;
+  color: #d0d0d0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chart-container {
+    max-width: 95%;
+    padding: 15px;
   }
+
   h2 {
-    margin-bottom: 10px;
+    font-size: 1.4rem;
   }
-  .filter-buttons {
-    margin-bottom: 20px;
-  }
+
   .filter-buttons button {
-    background-color: #333;
-    color: #888;
-    border: none;
-    padding: 5px 10px;
-    margin-right: 10px;
-    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 8px 12px;
   }
-  .filter-buttons button.active {
-    background-color: #4a4a4a;
-    color: white;
-  }
-  .chart {
-    display: flex;
-    flex-direction: column;
-  }
-  .chart-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
+
   .country-name {
-    width: 100px;
-    text-align: right;
-    margin-right: 10px;
+    width: 85px;
+    font-size: 0.9rem;
   }
-  .bar-container {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-  }
+
   .bar {
-    height: 20px;
-    background-color: #5ad8e6;
-    transition: width 0.3s ease-in-out;
+    height: 16px;
   }
+
   .sessions {
-    margin-left: 10px;
+    font-size: 0.9rem;
   }
+}

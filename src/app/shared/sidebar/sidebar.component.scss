@@ -1,85 +1,157 @@
 .sidebar {
-    width: 250px;
-    height: 100%;
-    background-color: #4285f4;
-    color: white;
-    padding: 20px;
-    transition: all 0.3s ease;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .sidebar.closed {
-    transform: translateX(-100%);
-  }
-  
-  .logo {
-    font-size: 24px;
-    margin-bottom: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    margin-bottom: 15px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  nav ul li a:hover, nav ul li a.active {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .active {
-    background-color: white;
-    color: #4285f4;
-  }
-  
-  .submenu {
-    margin-left: 20px;
-    margin-top: 10px;
-    display: none;
-    &.open {
-      display: block;
-    }
-  }
-  
-  
-  .sidebar.closed .logo,
-  .sidebar.closed nav ul li a span {
-    display: none;
-  }
-  
-  .sidebar.closed nav ul li a {
-    justify-content: center;
-  }
-  
-  :host ::ng-deep .dropdown-menu {
-    background-color: #4285f4;
-    border: none;
-  }
-  
-  :host ::ng-deep .dropdown-item {
-    color: white;
-    padding: 10px 20px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  }
-  
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(135deg, #4285f4, #2a5bd7);
+  color: white;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.logo {
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  position: relative;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+nav ul li a:hover,
+nav ul li a.active,
+nav ul li a[ngbDropdownToggle].active {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 4px 0 0 0 white;
+  color: white;
+}
+
+nav ul li a.active span,
+nav ul li a[ngbDropdownToggle].active span {
+  font-weight: bold;
+  color: white;
+}
+
+/* Hide dropdown arrow */
+nav ul li a[ngbDropdownToggle]::after {
+  display: none;
+}
+
+.submenu {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: none;
+}
+
+.submenu.open {
+  display: block;
+}
+
+.sidebar.closed .logo,
+.sidebar.closed nav ul li a span {
+  display: none;
+}
+
+.sidebar.closed nav ul li a {
+  justify-content: center;
+}
+
+:host ::ng-deep .dropdown-menu {
+  background: linear-gradient(135deg, #2a5bd7, #4285f4);
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+:host ::ng-deep .dropdown-item {
+  color: white;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+:host ::ng-deep .dropdown-item.active {
+  background-color: white;
+  color: #4285f4;
+  font-weight: bold;
+  border-left: 3px solid #4285f4;
+}
+
+:host ::ng-deep .dropdown-toggle.active {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+:host ::ng-deep .dropdown-menu .dropdown-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: bold;
+}
+
+:host ::ng-deep .dropdown-menu .dropdown-item.active:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+:host ::ng-deep .dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  color: white;
+}
+
+/* Additional padding for dropdown toggle */
+nav ul li a[ngbDropdownToggle] {
+  padding-right: 20px;
+}
+
+/* Adding a custom arrow for better visuals */
+nav ul li a[ngbDropdownToggle]::before {
+  content: '\25BC'; /* Unicode for downward arrow */
+  position: absolute;
+  right: 15px;
+  color: white;
+  font-size: 10px;
+  transition: transform 0.3s;
+}
+
+/* Rotate arrow when dropdown is active */
+nav ul li a[ngbDropdownToggle].active::before {
+  transform: rotate(180deg);
+}

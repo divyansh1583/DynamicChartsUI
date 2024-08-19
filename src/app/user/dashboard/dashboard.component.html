@@ -1,6 +1,19 @@
-<app-audience-metrics></app-audience-metrics>
-<app-balance-overview></app-balance-overview>
-<app-revenue></app-revenue>
-<app-sales-by-locations></app-sales-by-locations>
-<app-sessions-by-countries></app-sessions-by-countries>
-<app-store-visits-by-source></app-store-visits-by-source>
+<div class="main">
+    <h1 class="dashboard-heading">Dashboard</h1>
+    <div class="revenue">
+        <app-revenue></app-revenue>
+        <app-store-visits-by-source></app-store-visits-by-source>
+    </div>
+    <div class="countries">
+        <app-sales-by-locations></app-sales-by-locations>
+        <app-sessions-by-countries></app-sessions-by-countries>
+    </div>
+   
+    <div class="audience">
+        <app-audience-metrics></app-audience-metrics>
+    </div>
+    
+    <div class="balance">
+        <app-balance-overview></app-balance-overview>
+    </div>
+</div>
