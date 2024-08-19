@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 Chart.register(...registerables);
 
 @Component({
@@ -18,7 +19,7 @@ Chart.register(...registerables);
     chart: Chart | undefined;
 currentFilter: any;
   
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private toastr: ToastrService) {}
   
     ngOnInit(): void {
       this.loadRevenueData();
@@ -27,21 +28,33 @@ currentFilter: any;
   
     loadRevenueData(filter: string = 'ALL'): void {
       this.userService.getRevenueData(filter).subscribe({
-        next:(data) => {
-          this.revenueData = data;
+        next: (res) => {
+          if (res.statusCode === 200) {
+            this.revenueData = res.data;
+          } else {
+            this.toastr.error(res.message);
+          }
         },
-        error:(error) => console.error('Error fetching revenue data:', error)
-    });
+        error: (err) => {
+          this.toastr.error(err.message);
+        }
+      });
     }
   
     loadMonthlyData(): void {
-      this.userService.getMonthlyRevenueData().subscribe(
-        (data) => {
-          this.monthlyData = data;
-          this.createChart();
+      this.userService.getMonthlyRevenueData().subscribe({
+        next: (res) => {
+          if (res.statusCode === 200) {
+            this.monthlyData = res.data;
+            this.createChart();
+          } else {
+            this.toastr.error(res.message);
+          }
         },
-        (error) => console.error('Error fetching monthly data:', error)
-      );
+        error: (err) => {
+          this.toastr.error(err.message);
+        }
+      });
     }
   
     createChart(): void {

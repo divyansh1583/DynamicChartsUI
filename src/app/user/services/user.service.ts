@@ -50,14 +50,14 @@ export class UserService {
       );
   }
 
-getBalanceOverview(year: number): Observable<BalanceOverview> {
+getBalanceOverview(year: number): Observable<any> {
   return this.http.get<BalanceOverview>(`${this.apiUrl}/balance-overview?year=${year}`);
 }
 
 
 
-  getSalesByLocations(): Observable<SalesByLocationsDTO[]> {
-    return this.http.get<SalesByLocationsDTO[]>(`${this.apiUrl}/sales-by-locations`);
+  getSalesByLocations(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/sales-by-locations`);
   }
 
   getStoreVisitsBySource(): Observable<any> {

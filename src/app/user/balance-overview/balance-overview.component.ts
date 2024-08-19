@@ -3,6 +3,7 @@ import { BalanceOverview, UserService } from '../services/user.service';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 Chart.register(...registerables);
 
 @Component({
@@ -18,20 +19,26 @@ export class BalanceOverviewComponent implements OnInit {
   selectedYear: number = 2024; // Default to current year
   years: number[] = [2024, 2023]; // Available years
 
-  constructor(private balanceOverviewService: UserService) {}
+  constructor(private balanceOverviewService: UserService,private toastr: ToastrService) {}
 
   ngOnInit() {
     this.fetchData();
   }
 
   fetchData() {
-    this.balanceOverviewService.getBalanceOverview(this.selectedYear).subscribe(
-      (data) => {
-        this.balanceOverview = data;
-        this.createChart();
+    this.balanceOverviewService.getBalanceOverview(this.selectedYear).subscribe({
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.balanceOverview = res.data;
+          this.createChart();
+        } else {
+          this.toastr.error(res.message);
+        }
       },
-      (error) => console.error('Error fetching balance overview:', error)
-    );
+      error: (err) => {
+        this.toastr.error(err.message);
+      }
+    });
   }
 
   onYearChange() {

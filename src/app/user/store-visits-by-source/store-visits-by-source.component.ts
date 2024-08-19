@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 Chart.register(...registerables);
 
@@ -15,16 +16,25 @@ Chart.register(...registerables);
 export class StoreVisitsBySourceComponent implements OnInit {
   chart: Chart<'doughnut'> | undefined; // Change to 'doughnut' type
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private toastr: ToastrService) {}
+
 
   ngOnInit() {
     this.loadData();
   }
 
   loadData() {
-    this.userService.getStoreVisitsBySource().subscribe(data => {
-      console.log(data); 
-      this.createChart(data);
+    this.userService.getStoreVisitsBySource().subscribe({
+      next: (res) => {
+        if (res.statusCode === 200) {
+          this.createChart(res.data);
+        } else {
+          this.toastr.error(res.message);
+        }
+      },
+      error: (err) => {
+        this.toastr.error(err.message);
+      }
     });
   }
 
