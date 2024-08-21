@@ -5,6 +5,7 @@
         <li><a routerLink="/user/dashboard" routerLinkActive="active">
           <i class="bi bi-grid"></i> <span>Dashboard</span>
         </a></li>
+        
         <li ngbDropdown>
           <a href (click)="false" ngbDropdownToggle>
             <i class="bi bi-people"></i> <span>Charts</span>
@@ -19,6 +20,9 @@
             <!-- Add other user management options here -->
           </div>
         </li>
+        <li><a routerLink="/user/add-data" routerLinkActive="active">
+          <i class="bi bi-grid"></i> <span>Add Order</span>
+        </a></li>
       </ul>
     </nav>
   </div>

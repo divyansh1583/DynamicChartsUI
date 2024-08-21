@@ -27,6 +27,9 @@ export interface MonthlyBalanceData {
 
 
 export class UserService {
+  addOrder(orderData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add-order`, orderData);
+  }
 
   private apiUrl = 'https://localhost:7042/api/Charts';
   constructor(private http: HttpClient) { }

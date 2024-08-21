@@ -8,6 +8,7 @@ import { SessionsByCountriesComponent } from './sessions-by-countries/sessions-b
 import { BalanceOverviewComponent } from './balance-overview/balance-overview.component';
 import { SalesByLocationsComponent } from './sales-by-locations/sales-by-locations.component';
 import { StoreVisitsBySourceComponent } from './store-visits-by-source/store-visits-by-source.component';
+import { AddDataComponent } from './add-data/add-data.component';
 
 const routes: Routes = [
   {path: '', 
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'balance-overview', component: BalanceOverviewComponent },
       { path: 'sales-by-locations', component: SalesByLocationsComponent },
       { path: 'store-visits-by-source', component: StoreVisitsBySourceComponent },
+      {path: 'add-data',component : AddDataComponent},
     ] 
   },
 ];
