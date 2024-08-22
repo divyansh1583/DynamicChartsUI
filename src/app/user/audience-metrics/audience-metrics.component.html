@@ -8,15 +8,15 @@
     </div>
     <div class="metrics">
       <div class="metric">
-        <h3>{{ metrics.avg_Session }} <span class="increase">{{ metrics.avg_Session_Increase_Percentage }}% ↑</span></h3>
+        <h3 class="increase">{{ metrics.avg_Session }}↑</h3>
         <p>Avg. Session</p>
       </div>
       <div class="metric">
-        <h3>{{ metrics.conversion_Rate }} <span class="increase">{{ metrics.conversion_Rate_Increase_Percentage }}% ↑</span></h3>
+        <h3 class="increase">{{ metrics.conversion_Rate }}↑</h3>
         <p>Conversion Rate</p>
       </div>
       <div class="metric">
-        <h3>{{ formatDuration(metrics.avg_Session_Duration_Seconds) }} <span class="increase">{{ metrics.avg_Session_Duration_Increase_Percentage }}% ↑</span></h3>
+        <h3 class="increase">{{ formatDuration(metrics.avg_Session_Duration_Seconds) }}↑</h3>
         <p>Avg. Session Duration</p>
       </div>
     </div>
@@ -24,3 +24,8 @@
       <canvas id="audienceChart"></canvas>
     </div>
   </div>
+
+
+  <!-- <span class="increase">{{ metrics.avg_Session_Increase_Percentage }}% ↑</span> -->
+  <!-- <span class="increase">{{ metrics.conversion_Rate_Increase_Percentage }}% ↑</span> -->
+  <!-- <span class="increase">{{ metrics.avg_Session_Duration_Increase_Percentage }}% ↑</span> -->

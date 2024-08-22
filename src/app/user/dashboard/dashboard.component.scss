@@ -1,79 +1,89 @@
-/* Overall styling for the dashboard */
+/* Main Container */
 .main {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     padding: 20px;
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
-}
-
-/* Styling for the dashboard heading */
-.dashboard-heading {
-    font-size: 2em;
-    font-weight: bold;
+    background-color: #f5f7fa;
+    font-family: 'Poppins', sans-serif;
     color: #333;
-    text-align: center;
+}
+
+/* Dashboard Heading */
+.dashboard-heading {
+    color: #2b8cbd;
+    font-size: 2rem;
     margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 10px;
-    border-bottom: 2px solid #ccc;
+    text-align: center;
+    font-weight: 600;
 }
 
-/* Styling for individual sections */
-.main > div {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Flex styling for rows with two components */
-.main > div.revenue,
-.main > div.countries {
+/* Sections */
+.revenue,
+.countries,
+.audience,
+.balance {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-/* Components inside each section */
-.main > div > * {
+/* Individual Components Styling */
+.revenue > * {
     flex: 1;
-    margin: 0 10px;
-    padding: 10px;
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
 }
 
-/* Ensure there's no extra margin on the first and last child components */
-.main > div > :first-child {
-    margin-left: 0;
+.countries > * {
+    flex: 1;
+    margin-right: 10px;
 }
-.main > div > :last-child {
+
+.audience > * {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.balance > * {
+    width: 100%;
+}
+
+/* Remove margin for last child */
+.revenue > *:last-child,
+.countries > *:last-child {
     margin-right: 0;
 }
 
-/* Media query for responsive design */
-@media (max-width: 768px) {
-    .main > div.revenue,
-    .main > div.countries {
-        flex-direction: column;
-    }
-    .main > div > * {
-        margin: 10px 0;
-    }
+/* Card Styles */
+.revenue > *, 
+.countries > *, 
+.audience > *, 
+.balance > * {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-/* Additional styles for specific components */
-.revenue > app-revenue,
-.revenue > app-store-visits-by-source,
-.countries > app-sales-by-locations,
-.countries > app-sessions-by-countries,
-.audience > app-audience-metrics,
-.balance > app-balance-overview {
-    background-color: #fff;
-    border: none;
-    box-shadow: none;
+/* Hover Effect */
+.revenue > *:hover, 
+.countries > *:hover, 
+.audience > *:hover, 
+.balance > *:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .revenue, .countries {
+        flex-direction: column;
+    }
+
+    .revenue > *, .countries > * {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .revenue > *:last-child, .countries > *:last-child {
+        margin-bottom: 0;
+    }
 }

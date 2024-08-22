@@ -71,8 +71,7 @@ export class AudienceMetricsComponent implements OnInit {
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 0,
             barThickness: 10,
-            // borderRadius: { topLeft: 10, topRight: 10 }, // Round top corners
-            // borderSkipped: false, // Apply border radius to all corners
+          
           },
           {
             label: 'Current Year',
@@ -81,8 +80,8 @@ export class AudienceMetricsComponent implements OnInit {
             borderColor: 'rgba(255, 255, 255, 1)',
             borderWidth: 0,
             barThickness: 10,
-            borderRadius: { topLeft: 10, topRight: 10 }, // Round top corners
-            borderSkipped: false, // Apply border radius to all corners
+            borderRadius: { topLeft: 10, topRight: 10 }, 
+            borderSkipped: false, 
           }
         ]
       },
@@ -106,7 +105,7 @@ export class AudienceMetricsComponent implements OnInit {
         },
         plugins: {
           legend: {
-            display: false,
+            display: true,
           }
         },
       }

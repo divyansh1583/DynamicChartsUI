@@ -1,44 +1,49 @@
 <div class="container my-5">
-    <div class="card order-form-card shadow-lg">
-      <div class="card-header text-white order-form-header">
-        <h3 class="mb-0 text-center">Add Order</h3>
-      </div>
-      <div class="card-body p-4">
-        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
-          <div class="mb-4">
-            <label for="productId" class="form-label">Product</label>
-            <select id="productId" formControlName="productId" class="form-select form-control-lg">
-              <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
-            </select>
+  <div class="card order-form-card shadow-lg">
+    <div class="card-header text-white order-form-header">
+      <h3 class="mb-0 text-center">Add Order</h3>
+    </div>
+    <div class="card-body p-4">
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="productId" class="form-label">Product</label>
+          <select id="productId" formControlName="productId" class="form-select form-control-lg">
+            <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="orderDate" class="form-label">Order Date</label>
+          <input id="orderDate" type="date" formControlName="orderDate" class="form-control form-control-lg" />
+          <div *ngIf="orderForm.get('orderDate')?.errors?.['futureDate']" class="text-danger">
+            Order date cannot be in the future.
           </div>
-  
-          <div class="mb-4">
-            <label for="orderDate" class="form-label">Order Date</label>
-            <input id="orderDate" type="date" formControlName="orderDate" class="form-control form-control-lg" />
+        </div>
+
+        <div class="mb-4">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input id="quantity" type="number" formControlName="quantity" class="form-control form-control-lg" />
+          <div *ngIf="orderForm.get('quantity')?.errors?.['negativeNumber']" class="text-danger">
+            Quantity cannot be negative or zero.
           </div>
-  
-          <div class="mb-4">
-            <label for="quantity" class="form-label">Quantity</label>
-            <input id="quantity" type="number" formControlName="quantity" class="form-control form-control-lg" />
-          </div>
-  
-          <div class="mb-4">
-            <label for="sourceId" class="form-label">Source</label>
-            <select id="sourceId" formControlName="sourceId" class="form-select form-control-lg">
-              <option *ngFor="let source of sources" [value]="source.id">{{ source.name }}</option>
-            </select>
-          </div>
-  
-          <div class="mb-4">
-            <label for="countryId" class="form-label">Country</label>
-            <select id="countryId" formControlName="countryId" class="form-select form-control-lg">
-              <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
-            </select>
-          </div>
-  
-          <button type="submit" class="btn btn-gradient w-100 py-3">Add Order</button>
-        </form>
-      </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="sourceId" class="form-label">Source</label>
+          <select id="sourceId" formControlName="sourceId" class="form-select form-control-lg">
+            <option *ngFor="let source of sources" [value]="source.id">{{ source.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="countryId" class="form-label">Country</label>
+          <select id="countryId" formControlName="countryId" class="form-select form-control-lg">
+            <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-gradient w-100 py-3">Add Order</button>
+      </form>
     </div>
   </div>
-  
+</div>

@@ -15,10 +15,11 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  passwordVisible: boolean = false;
   
   loginForm: FormGroup;
   hide: any;
-  passwordVisible: any;
+  
   loginDetails: LoginDetails = { email: '', password: '' };
 
   constructor(
@@ -52,7 +53,7 @@ export class LoginComponent {
           if (res.statusCode === 200) {
         
             const expiryDate = new Date();
-            expiryDate.setDate(expiryDate.getDate() + 1); // Set cookie to expire in 7 days
+            expiryDate.setDate(expiryDate.getDate() + 1);
             this.cookieService.set('login_token', res.data.token, expiryDate);
   
             this.router.navigate(['/user/dashboard']);

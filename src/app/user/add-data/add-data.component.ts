@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-data',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,],
   templateUrl: './add-data.component.html',
   styleUrl: './add-data.component.scss'
 })
@@ -47,31 +47,49 @@ export class AddDataComponent {
     { id: 4, name: 'Referral' },
     { id: 5, name: 'Other' }
   ];
-  orderForm: any;
 
-  constructor(private fb: FormBuilder, private apiService: UserService,private tostr : ToastrService,private router:Router) {}
+  orderForm!: FormGroup;
+
+  constructor(
+    private fb: FormBuilder, 
+    private apiService: UserService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.orderForm = this.fb.group({
       productId: [null, Validators.required],
-      orderDate: [null, Validators.required],
-      quantity: [null, Validators.required],
+      orderDate: [null, [Validators.required, this.futureDateValidator]],
+      quantity: [null, [Validators.required, this.negativeNumberValidator]],
       sourceId: [null, Validators.required],
       countryId: [null, Validators.required]
     });
   }
 
+  // Custom validator to check if the quantity is not negative
+  negativeNumberValidator(control: AbstractControl): ValidationErrors | null {
+    return control.value <= 0 ? { negativeNumber: true } : null;
+  }
+
+  // Custom validator to check if the order date is not in the future
+  futureDateValidator(control: AbstractControl): ValidationErrors | null {
+    const today = new Date();
+    const selectedDate = new Date(control.value);
+    return selectedDate > today ? { futureDate: true } : null;
+  }
+
   onSubmit() {
     if (this.orderForm.valid) {
       this.apiService.addOrder(this.orderForm.value).subscribe({
-        next:(response) => {
-          this.tostr.success('Order added successfully', response.message);
+        next: (response) => {
+          this.toastr.success('Order added successfully', response.message);
           this.router.navigate(['/user/dashboard']);
         },
-        error:(error) => {
-          this.tostr.error('Error adding order', error.message);
+        error: (error) => {
+          this.toastr.error('Error adding order', error.message);
         }
-    });
+      });
     }
   }
 
