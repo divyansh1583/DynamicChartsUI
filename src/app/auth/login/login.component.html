@@ -1,11 +1,10 @@
 <div class="login-form-wrapper">
-  <!-- Background image positioned using HTML -->
   <img
     src="../../../assets/stock-market-chart-technology-blue-background.jpg"
     alt="Background"
     class="background-image"
   />
-  <!-- Login form positioned over the background image -->
+
   <div class="login-form-container">
     <h1 class="logo">DynamiCharts</h1>
     <div class="card p-4 card-wrapper">
@@ -26,9 +25,7 @@
           </div>
         </div>
         <div class="mb-4">
-          <label for="password" class="form-label"
-            >Enter your password</label
-          >
+          <label for="password" class="form-label">Enter your password</label>
           <div class="password-input-group">
             <input
               [type]="passwordVisible ? 'text' : 'password'"
@@ -37,32 +34,23 @@
               formControlName="password"
               placeholder="Password"
             />
-            <span class="password-toggle">
-              <i
-                [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"
-                (click)="passwordVisible = !passwordVisible"
-              ></i>
+            <span class="password-toggle" (click)="passwordVisible = !passwordVisible">
+              <i [ngClass]="passwordVisible ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
             </span>
           </div>
           <div *ngIf="password?.touched && password?.invalid" class="text-danger">
             <small *ngIf="password?.errors?.['required']">Password is required.</small>
-            <small
-              *ngIf="password?.errors?.['minlength']"
-              >Password must be at least 8 characters long.</small
-            >
+            <small *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long.</small>
           </div>
         </div>
         <button
           [disabled]="loginForm.invalid"
           type="submit"
-          class="btn btn-primary warning w-100"
+          class="btn btn-primary w-100"
         >
           Sign in
         </button>
       </form>
     </div>
-    <!-- <div class="mt-3 text-center">
-      <a routerLink="/forgot-password" class="forgot-password-link">Forgot Password?</a>
-    </div> -->
   </div>
 </div>

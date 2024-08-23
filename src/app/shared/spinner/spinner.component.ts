@@ -10,5 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './spinner.component.scss'
 })
 export class SpinnerComponent {
+ 
   constructor(public loader: LoaderService) { }
+
+
 }

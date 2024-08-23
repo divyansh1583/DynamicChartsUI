@@ -3,8 +3,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: white;
+    padding: 10px ;
+    background-color: #2b8cbd;
+    opacity: 0.8;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     min-width: 0; /* This allows the header to shrink below its default size */
   }
@@ -21,6 +22,7 @@ header {
     font-size: 24px;
     margin-right: 20px;
     cursor: pointer;
+    color: white;
   }
   
   .right {
@@ -45,4 +47,8 @@ header {
   .user-name {
     font-weight: bold;
     white-space: nowrap;
+  }
+
+  .mat-icon{
+    color: white;
   }
